@@ -1,10 +1,12 @@
 package com.api.parkingcontrol.models.Dto;
 
 
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-
+@Data
 public class ParkingSpotDto {
 
     @NotBlank

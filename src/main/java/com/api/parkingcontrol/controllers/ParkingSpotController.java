@@ -28,6 +28,16 @@ public class ParkingSpotController {
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot (@RequestBody @Valid ParkingSpotDto parkingSpotDto){
+        if ( parkingSportService.existsByLicensePlateCar(parkingSpotDto.getLicencePlateCar())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Placa do veículo já utilizado!");
+        }
+        if (parkingSportService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Vaga de estacionamento já utilizada");
+        }
+        if (parkingSportService.existsByApartamentAndBlock(parkingSpotDto.getApartament(), parkingSpotDto.getBlock())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Vaga utilizada no registro do Apatamento/Block");
+        }
+
         var parkingSportModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDto, parkingSportModel);
         parkingSportModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
