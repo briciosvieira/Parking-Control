@@ -2,21 +2,20 @@ package com.api.parkingcontrol.services;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.repository.ParkingSpotRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-// criar interface e depois essa classe implementar a interface
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Service
-public class ParkingSportService {
+public class ParkingSpotService {
+    private final ParkingSpotRepository parkingSpotRepository;
 
-
-
-    final ParkingSpotRepository parkingSpotRepository;
-
-    @Autowired
-    public ParkingSportService( ParkingSpotRepository parkingSpotRepository) {
+    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
         this.parkingSpotRepository = parkingSpotRepository;
     }
 
+
+    @Transactional
     public Object save(ParkingSpotModel parkingSportModel) {
         return parkingSpotRepository.save(parkingSportModel);
     }
@@ -32,5 +31,9 @@ public class ParkingSportService {
 
     public boolean existsByApartamentAndBlock(String apartament, String block) {
         return parkingSpotRepository.existsByApartamentAndBlock(apartament,block);
+    }
+
+    public List<ParkingSpotModel> findAll(){
+        return parkingSpotRepository.findAll();
     }
 }
