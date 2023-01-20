@@ -3,11 +3,9 @@ package com.api.parkingcontrol.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
 import java.util.UUID;
 //aprender relacionamento JPA
@@ -27,7 +25,7 @@ public class ParkingSpotModel implements Serializable {
     private String parkingSpotNumber;
 
     @Column(nullable = false, unique = true, length = 7 )
-    private String licencePlateCar;
+    private String licensePlateCar;
 
     @Column(nullable = false, length = 70)
     private String brandCar;
