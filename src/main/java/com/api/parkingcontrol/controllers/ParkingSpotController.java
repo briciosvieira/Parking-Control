@@ -29,7 +29,7 @@ public class ParkingSpotController {
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot (@RequestBody @Valid ParkingSpotDto parkingSpotDto){
-        if ( parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())){
+        if ( parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicencePlateCar())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Placa do veículo já utilizado!");
         }
         if (parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())){

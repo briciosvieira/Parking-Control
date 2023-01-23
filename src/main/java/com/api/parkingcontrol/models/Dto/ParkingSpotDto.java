@@ -12,7 +12,7 @@ public class ParkingSpotDto {
     @NotBlank
     private String parkingSpotNumber;
     @NotBlank @Size(max = 7)
-    private String licensePlateCar;
+    private String licencePlateCar;
     @NotBlank
     private String brandCar;
     @NotBlank
