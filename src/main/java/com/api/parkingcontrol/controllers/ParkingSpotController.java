@@ -89,4 +89,6 @@ public class ParkingSpotController {
         parkingSpotModel.setBlock(parkingSpotDto.getBlock());
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
     }
+
+
 }
